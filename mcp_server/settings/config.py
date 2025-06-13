@@ -7,6 +7,7 @@ class Common:
     # MCP Server Settings
     MCP_SERVER_NAME: str = "mcp-production"
     MCP_SERVER_VERSION: str = "0.1.0"
+    TRANSPORT: str = "stdio"
 
     # Application Settings
     DEBUG: bool = False

@@ -8,7 +8,7 @@ if not cfg:
         "configuration is not set. Please set the ENVIRONMENT environment variable."
     )
 
-mcp = FastMCP(name=cfg.MCP_SERVER_NAME)
+mcp = FastMCP(name=cfg.MCP_SERVER_NAME, transport=cfg.TRANSPORT)
 
 logger.info(f"Starting {cfg.MCP_SERVER_NAME} v{cfg.MCP_SERVER_VERSION}")
 logger.debug(f"Debug mode: {cfg.DEBUG}")
