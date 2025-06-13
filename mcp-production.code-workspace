@@ -1,0 +1,42 @@
+{
+    "folders": [
+        {
+            "name": "Root Folder",
+            "path": "."
+        }
+    ],
+    "settings": {
+        // Auto formatting
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": false,
+        // Python-specific editor settings
+        "python.analysis.autoImportCompletions": true,
+        "python.analysis.typeCheckingMode": "basic",
+        "python.analysis.autoSearchPaths": true,
+        // File associations
+        "files.associations": {
+            "pyproject.toml": "toml",
+            "*.py": "python"
+        },
+        // Exclude files from explorer
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/.pytest_cache": true,
+            "**/.mypy_cache": true,
+            "**/*.pyc": true,
+            "**/*.pyo": true,
+            "**/.coverage": true,
+            "**/.DS_Store": true
+        },
+        // Search settings
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/bower_components": true,
+            "**/.venv": true,
+            "**/__pycache__": true,
+            "**/.pytest_cache": true,
+            "**/.mypy_cache": true
+        }
+    }
+}
