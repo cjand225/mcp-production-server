@@ -2,18 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python: MCP Server",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "python": "./.venv/bin/python"
-        },
-        {
-            "name": "Python: Main",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/main.py",
+            "module": "uvicorn",
+            "args": [
+                "main:mcp",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8000",
+                "--reload"
+            ],
             "console": "integratedTerminal",
             "python": "./.venv/bin/python"
         }
