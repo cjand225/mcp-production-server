@@ -6,14 +6,15 @@
         }
     ],
     "settings": {
-        // Auto formatting
-        "editor.formatOnSave": true,
-        "editor.formatOnPaste": true,
-        "editor.formatOnType": false,
-        // Python-specific editor settings
-        "python.analysis.autoImportCompletions": true,
-        "python.analysis.typeCheckingMode": "basic",
-        "python.analysis.autoSearchPaths": true,
+        "[python]": {
+            "editor.defaultFormatter": "charliermarsh.ruff",
+            "editor.formatOnSave": true,
+            "editor.formatOnPaste": true,
+            "editor.codeActionsOnSave": {
+                "source.organizeImports": "explicit",
+                "source.fixAll.ruff": "explicit"
+            },
+        },
         // File associations
         "files.associations": {
             "pyproject.toml": "toml",
@@ -38,5 +39,14 @@
             "**/.pytest_cache": true,
             "**/.mypy_cache": true
         }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-python.debugpy",
+            "ms-python.mypy-type-checker",
+            "charliermarsh.ruff",
+        ]
     }
 }
