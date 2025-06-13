@@ -7,7 +7,7 @@
             "request": "launch",
             "module": "uvicorn",
             "args": [
-                "main:mcp",
+                "mcp_server.main:mcp",
                 "--host",
                 "0.0.0.0",
                 "--port",
