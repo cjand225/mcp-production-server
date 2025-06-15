@@ -1,42 +1,33 @@
 import os
 
 
-class Common:
-    """Base configuration class with common settings"""
+class Config:
+    """Single configuration class with environment variable overrides"""
 
-    # MCP Server Settings
+    # Static MCP Server Settings
     MCP_SERVER_NAME: str = "mcp-production"
     MCP_SERVER_VERSION: str = "0.1.0"
-    TRANSPORT: str = "stdio"
 
-    # Application Settings
-    DEBUG: bool = False
-    BASE_URL: str = "http://localhost:8000"
+    # Environment-configurable settings with defaults
+    DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
+    HOST: str = os.getenv("HOST", "0.0.0.0")
+    PORT: int = int(os.getenv("PORT", "8000"))
 
-    # Logging
-    LOG_LEVEL: str = "INFO"
-    LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    # Transport: stdio for MCP, sse for HTTP deployment
+    TRANSPORT: str = os.getenv("TRANSPORT", "sse")
 
+    # Logging configuration
+    LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
+    LOG_FORMAT: str = os.getenv(
+        "LOG_FORMAT", "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
 
-class Local(Common):
-    """Local development configuration"""
+    @classmethod
+    def is_production(cls) -> bool:
+        """Helper method to check if running in production mode"""
+        return os.getenv("ENVIRONMENT", "development").lower() == "production"
 
-    DEBUG: bool = True
-    LOG_LEVEL: str = os.getenv("SERVER_LOG_LEVEL", "DEBUG")
-    BASE_URL: str = "http://localhost:8000"
-
-
-class Production(Common):
-    """Production configuration"""
-
-    DEBUG: bool = False
-    LOG_LEVEL: str = os.getenv("SERVER_LOG_LEVEL", "WARNING")
-    BASE_URL: str = os.getenv("PRODUCTION_BASE_URL", "https://api.production.com")
-
-
-class Staging(Production):
-    """Staging configuration - inherits from Production but with debug enabled"""
-
-    DEBUG: bool = True
-    LOG_LEVEL: str = os.getenv("SERVER_LOG_LEVEL", "INFO")
-    BASE_URL: str = os.getenv("STAGING_BASE_URL", "https://api.staging.com")
+    @classmethod
+    def is_debug(cls) -> bool:
+        """Helper method to check debug status"""
+        return cls.DEBUG

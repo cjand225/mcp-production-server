@@ -1,21 +1,27 @@
 [project]
-name = "mcp-production"
+name = "mcp-server"
 version = "0.1.0"
-description = "A production-ready, extensible template for building Model Context Protocol (MCP) servers in Python."
+description = "A production-ready server for building Model Context Protocol (MCP) servers in Python."
 readme = "README.md"
 requires-python = ">=3.12"
-keywords = ["mcp", "model-context-protocol", "server", "template"]
+keywords = ["mcp", "model-context-protocol", "server"]
 dependencies = [
     "httpx>=0.28.1",
-    "mcp>=1.9.4",
     "pydantic>=2.11.5",
     "python-dotenv>=1.1.0",
-    "uvicorn>=0.34.3",
+    "fastmcp>=2.8.0",
 ]
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mcp_server*"]
 
 [dependency-groups]
 dev = [
-    "mcp[cli]>=1.9.4",
     "mypy>=1.16.0",
     "pytest>=8.4.0",
     "pytest-asyncio>=1.0.0",

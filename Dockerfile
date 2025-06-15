@@ -21,4 +21,4 @@ USER app
 
 EXPOSE 8000
 
-CMD ["uv", "run", "--no-sync", "uvicorn", "mcp_server.main:mcp", "--host", "0.0.0.0", "--port", "8000"] 
+CMD ["uv", "run", "--no-dev", "fastmcp", "run", "--transport", "sse", "mcp_server/app.py:mcp"] 
