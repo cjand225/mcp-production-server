@@ -2,6 +2,7 @@
 
 from fastmcp import FastMCP
 
+from mcp_server.loader import load_modules
 from mcp_server.settings import Config as cfg
 from mcp_server.settings.logging import get_app_logger
 
@@ -13,3 +14,5 @@ mcp: FastMCP = FastMCP(
     port=cfg.PORT,
     log_level=cfg.LOG_LEVEL,
 )
+
+load_modules(mcp)
