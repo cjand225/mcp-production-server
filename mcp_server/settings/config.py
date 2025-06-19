@@ -22,6 +22,17 @@ class Config:
         "LOG_FORMAT", "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
 
+    # JWT Authentication Settings
+    JWT_PUBLIC_KEY: str = os.getenv("JWT_PUBLIC_KEY", "")
+    JWKS_URI: str = os.getenv("JWKS_URI", "")
+    JWT_ISSUER: str = os.getenv("JWT_ISSUER", "")
+    JWT_AUDIENCE: str = os.getenv("JWT_AUDIENCE", "")
+    REQUIRED_SCOPES: list[str] = (
+        os.getenv("REQUIRED_SCOPES", "").split(",")
+        if os.getenv("REQUIRED_SCOPES")
+        else []
+    )
+
     @classmethod
     def is_production(cls) -> bool:
         """Helper method to check if running in production mode"""
