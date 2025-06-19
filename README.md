@@ -36,8 +36,10 @@ uv run fastmcp run --transport sse mcp_server/app.py:mcp
 # Or run with stdio transport (for direct MCP clients)
 uv run fastmcp run --transport stdio mcp_server/app.py:mcp
 
-# For production with Docker
+# For production with Docker Compose
+docker-compose up -d
 
+# Or build and run with Docker directly
 # (build the image)
 docker build -t mcp-production .
 # run the image
