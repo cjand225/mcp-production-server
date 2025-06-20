@@ -9,7 +9,6 @@ class Config:
     MCP_SERVER_VERSION: str = "0.1.0"
 
     # Environment-configurable settings with defaults
-    DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
     HOST: str = os.getenv("HOST", "0.0.0.0")
     PORT: int = int(os.getenv("PORT", "8000"))
 
@@ -34,8 +33,3 @@ class Config:
     def is_production(cls) -> bool:
         """Helper method to check if running in production mode"""
         return os.getenv("ENVIRONMENT", "development").lower() == "production"
-
-    @classmethod
-    def is_debug(cls) -> bool:
-        """Helper method to check debug status"""
-        return cls.DEBUG
