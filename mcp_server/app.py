@@ -7,9 +7,8 @@ from mcp_server.loader import load_modules
 from mcp_server.settings import Config as cfg
 from mcp_server.settings.logging import get_app_logger
 
-logger = get_app_logger()
+logger = get_app_logger("mcp_server.app")
 
-# Configure authentication
 auth_provider = get_auth_provider()
 
 mcp: FastMCP = FastMCP(

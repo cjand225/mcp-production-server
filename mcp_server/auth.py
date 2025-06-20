@@ -8,7 +8,7 @@ from fastmcp.server.auth.auth import OAuthProvider
 from mcp_server.settings import Config as cfg
 from mcp_server.settings.logging import get_app_logger
 
-logger = get_app_logger()
+logger = get_app_logger("mcp_server.auth")
 
 
 def get_auth_provider() -> Optional[OAuthProvider]:

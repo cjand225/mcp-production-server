@@ -18,9 +18,6 @@ class Config:
 
     # Logging configuration
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
-    LOG_FORMAT: str = os.getenv(
-        "LOG_FORMAT", "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
 
     # JWT Authentication Settings
     JWT_PUBLIC_KEY: str = os.getenv("JWT_PUBLIC_KEY", "")
